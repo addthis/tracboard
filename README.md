@@ -84,6 +84,7 @@ installation and workflow.  This is the area in which TracBoard currently lacks 
 when it comes to Trac workflow requirements.
 
 The Trac configuration TracBoard assumes is, in brief:
+
  * development sprints correspond to _milestones_
  * milestones are named in the form YYYYMMDD_*, with special-meaning _TBD_ and _Backlog_ milestones
  * tickets are organized into _Pipelines_, implemented as custom fields, representing streams of work (teams, in our case)

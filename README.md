@@ -32,28 +32,40 @@ look at this.
 
 ## A Quick Tour
 
-TracBoard has three main views: Roadmap, Sprint, and Swimlane.
+TracBoard has three main views: 
+ * Roadmap
+ * Sprint
+ * Swimlane
+
+### Roadmap
 
 The _Roadmap_ view is useful for planning development sprints. It lets you view any number of milestones in parallel,
 including the special _Backlog_ milestone, and move items between them. Defects, stories, and features are represented
 as cards, which can be grouped and colored according to numerous different schemes (priority, owner, severity, and more).
 
 ![The Roadmap view](http://farm8.staticflickr.com/7153/6585146011_abb2164653.jpg "An example roadmap view")
-[larger image](http://www.flickr.com/photos/sptm/6585146011)
+
+[see larger image](http://www.flickr.com/photos/sptm/6585146011)
+
+### Sprint
 
 The _Sprint_ view is useful for moving items around within the context of an individual development sprint.  Its
 easy to see the status of various development items within the current sprint. Items are represented by cards as they
 are in the roadmap view, and have the same types of options.
 
 ![The Sprint view](http://farm8.staticflickr.com/7009/6585266711_f7238d7270.jpg "An example sprint view")
-[larger image](http://www.flickr.com/photos/sptm/6585266711)
+
+[see larger image](http://www.flickr.com/photos/sptm/6585266711)
+
+### Swimlane
 
 Finally, the _Swimlane_ view is another view on an in-progress development sprint, oriented in terms of per-story swimlanes.
 A swimlane is a row of activity around a specific story, making it easy to see the state of all of the items that are
 related to that story.  The same coloring options apply.
 
 ![The Swimlane view](http://farm8.staticflickr.com/7028/6585266889_827ee46f68.jpg "An example swimlane view")
-[larger image](http://www.flickr.com/photos/sptm/6585266889)
+
+[see larger image](http://www.flickr.com/photos/sptm/6585266889)
 
 ## Requirements and Setup
 
@@ -71,11 +83,11 @@ installation and workflow.  This is the area in which TracBoard currently lacks 
 when it comes to Trac workflow requirements.
 
 The Trac configuration TracBoard assumes is, in brief:
-* development sprints correspond to _milestones_
-* milestones are named in the form YYYYMMDD_*, with special-meaning _TBD_ and _Backlog_ milestones
-* tickets are organized into _Pipelines_, implemented as custom fields, representing streams of work (teams, in our case)
-* ticket types are _story_, _defect_, _feature_, and _task_, where story tickets have special meaning 
-  and are assumed to have dependent tickets representing the elements of work that need to be completed for the story
+ * development sprints correspond to _milestones_
+ * milestones are named in the form YYYYMMDD_*, with special-meaning _TBD_ and _Backlog_ milestones
+ * tickets are organized into _Pipelines_, implemented as custom fields, representing streams of work (teams, in our case)
+ * ticket types are _story_, _defect_, _feature_, and _task_, where story tickets have special meaning 
+   and are assumed to have dependent tickets representing the elements of work that need to be completed for the story
   
 ## FIXME
  

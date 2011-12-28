@@ -287,7 +287,7 @@ function buildFilterSetMarkup($trac, $showMilestones = FALSE) {
 	$markup .= '  <ul>';
 	
 	// Pipeline
-	$markup .= '    <li>Sprint: ' . buildPipelineChoiceMarkup . '</li>';
+	$markup .= '    <li>Sprint: ' . buildPipelineChoiceMarkup() . '</li>';
 
 	// Milestone
 	if ($showMilestones) {

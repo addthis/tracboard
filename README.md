@@ -70,23 +70,23 @@ related to that story.  The same coloring options apply.
 
 ## Requirements and Setup
 
-*Caveat Emptor:* TracBoard is an internal-use tool and us not fully vetted for use in Trac setups that are not 
-absolutely identical to ours.  That said, we're happy to help you try to get things up and running if you'd like to 
-try.
+*Caveat Emptor*. TracBoard is an internal-use tool that we built to better visualize our Trac data.  It is not fully 
+vetted for use in Trac setups that are not identical to ours. In other words, if your Trac is not configured in the same way
+that ours is, it may not work. That said, we're happy to help you try to get things up and running if you'd like to 
+try, and are anxious to build out the flexibility of the setup.
 
-TracBoard is PHP, and runnable from within a source distribution.  Edit `src/webroot/config.inc.php` with your own
+TracBoard is PHP, and is runnable directly from the source distribution.  Edit `src/webroot/config.inc.php` with your own
 configuration and go from there.
 
 ### About Trac Workflow Requirements
 
-TracBoard makes several assumptions about the underlying structure of the Trac system, which may not map to your own
-installation and workflow.  This is the area in which TracBoard currently lacks the most -- it is relatively inflexible
-when it comes to Trac workflow requirements.
+TracBoard makes several assumptions about the underlying structure of the Trac system; Actions and Fields need to be set up
+identically for TracBoard to function properly. We're working on improving the flexibility of TracBoard's Trac interface.
 
 The Trac configuration TracBoard assumes is, in brief:
 
- * development sprints correspond to _milestones_
- * milestones are named in the form YYYYMMDD_*, with special-meaning _TBD_ and _Backlog_ milestones
+ * development sprints correspond to Trac _Milestones_
+ * milestones are all named in the form YYYYMMDD_*, with special-meaning _TBD_ and _Backlog_ milestones
  * tickets are organized into _Pipelines_, implemented as custom fields, representing streams of work (teams, in our case)
  * ticket types are _story_, _defect_, _feature_, and _task_, where story tickets have special meaning 
    and are assumed to have dependent tickets representing the elements of work that need to be completed for the story

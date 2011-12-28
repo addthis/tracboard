@@ -1,0 +1,11 @@
+XML RPC support in PHP is provided by the XML-RPC for PHP project, by Ed Dumbill and others.
+See http://phpxmlrpc.sourceforge.net/
+
+Advanced JSON support in PHP is provided by the draft Services_JSON package by Michal Migurski and others.
+See http://pear.php.net/pepr/pepr-proposal-show.php?id=198
+
+JQuery and JQueryUI are used throughout this project.
+See http://jquery.com/
+See http://jqueryui.com/
+
+

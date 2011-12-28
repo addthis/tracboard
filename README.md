@@ -32,10 +32,10 @@ look at this.
 
 ## A Quick Tour
 
-TracBoard has three main views: 
- * Roadmap
- * Sprint
- * Swimlane
+TracBoard has three main views:
+ - Roadmap
+ - Sprint
+ - Swimlane
 
 ### Roadmap
 

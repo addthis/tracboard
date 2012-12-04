@@ -1,4 +1,4 @@
-<?
+<?php
 
 require_once('lib/json.inc.php');
 

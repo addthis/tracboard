@@ -224,16 +224,16 @@ function buildMilestonePhaseColumn($trac, $pipeline, $milestone, $phase, $displa
     $markup = "";
     if ($phase == "not-started") {
         if (!$shellOnly) $tickets = $trac->getTicketsNotStarted($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "Not Started", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml(isset($tickets) ? $tickets : NULL, "Not Started", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     } else if ($phase == "in-dev") {
         if (!$shellOnly) $tickets = $trac->getTicketsInDev($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "In Dev", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml(isset($tickets) ? $tickets : NULL, "In Dev", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     } else if ($phase == "in-test") {
         if (!$shellOnly) $tickets = $trac->getTicketsInTest($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "In Test", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml(isset($tickets) ? $tickets : NULL, "In Test", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     } else if ($phase == "done") {
         if (!$shellOnly) $tickets = $trac->getTicketsCompleted($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "Completed", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml(isset($tickets) ? $tickets : NULL, "Completed", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     }
     return $markup;
 }
@@ -241,13 +241,13 @@ function buildMilestonePhaseColumn($trac, $pipeline, $milestone, $phase, $displa
 function buildBacklogColumnHtml($trac, $pipeline, $grouping, $displayType, $excludedTypeVals, $shellOnly, $coloring, $expanded, $highlightCond = "none") {
     $statusVals = array("new", "reopened", "accepted", "assigned", "waiting_for_build", "in_test", "ready_for_test", "in_work");
     if (!$shellOnly) $tickets = $trac->queryTickets($statusVals, BACKLOG_MILESTONE, $pipeline, $excludedTypeVals);
-    return buildTicketColumnHtml($tickets, "Backlog", "backlog", true, true, $displayType, $grouping, $coloring, true, $expanded, $highlightCond);
+    return buildTicketColumnHtml(isset($tickets) ? $tickets : NULL, "Backlog", "backlog", true, true, $displayType, $grouping, $coloring, true, $expanded, $highlightCond);
 }
 
 function buildMilestoneColumnHtml($trac, $pipeline, $milestone, $displayType, $grouping, $excludedTypeVals, $shellOnly, $coloring, $expanded, $highlightCond = "none") {
     $statusVals = array("new", "accepted", "reopened", "assigned", "waiting_for_build", "in_test", "in_work", "ready_for_test");
     if (!$shellOnly) $tickets = $trac->queryTickets($statusVals, $milestone, $pipeline, $excludedTypeVals);
-    return buildTicketColumnHtml($tickets, $milestone, $milestone, true, true, $displayType, $grouping, $coloring, true, $expanded, $highlightCond);
+    return buildTicketColumnHtml(isset($tickets) ? $tickets : NULL, $milestone, $milestone, true, true, $displayType, $grouping, $coloring, true, $expanded, $highlightCond);
 }
 
 function buildOwnerChoiceMarkup($dfltAssignee = " ") {

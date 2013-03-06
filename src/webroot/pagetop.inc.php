@@ -24,7 +24,7 @@ require_once "uihelpers.inc.php";
     <title>TracBoard</title>
     <script type="text/javascript">
       // Config state...
-      var TRAC_SERVER = "<? echo TRAC_SERVER ?>";
+      var TRAC_SERVER = "<?php echo TRAC_SERVER ?>";
     </script>
     <script type="text/javascript" src="js/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/jqueryui/1.8.2/jquery-ui.min.js"></script>

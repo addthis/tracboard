@@ -30,7 +30,7 @@ $expanded = explode(",", $expandedStr);
         pipeline: "<?php echo $pipeline ?>",
         milestone: "<?php echo $milestone ?>",
         excludedTypes: [
-        <?
+        <?php
         $numVals = sizeof($excludedTypes);
         $i = 0;
         for($i = 0; $i < $numVals; $i++) {
@@ -43,7 +43,7 @@ $expanded = explode(",", $expandedStr);
         coloring: "<?php echo $coloring ?>",
         highlightCond: "<?php echo $highlightCond ?>",
         displayType: "<?php echo $displayType ?>",
-        expanded: ["<?= $expanded[0] ?>", "<?= $expanded[1] ?>", "<?= $expanded[2] ?>", "<?= $expanded[3] ?>"]
+        expanded: ["<?php $expanded[0] ?>", "<?php $expanded[1] ?>", "<?php $expanded[2] ?>", "<?php $expanded[3] ?>"]
     };
 
 </script>

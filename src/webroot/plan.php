@@ -64,7 +64,7 @@ foreach($milestonesViewed as $milestoneViewed) {
   var filters = {
     pipeline: "<?php echo $pipeline ?>",
     excludedTypes: [
-    <?
+    <?php
     $numVals = sizeof($excludedTypes);
     $i = 0;
     for($i = 0; $i < $numVals; $i++) {
@@ -78,7 +78,7 @@ foreach($milestonesViewed as $milestoneViewed) {
     highlightCond: "<?php echo $highlightCond ?>",
     displayType: "<?php echo $displayType ?>",
     expanded: [
-    <?
+    <?php
     $numVals = sizeof($expanded);
     $i = 0;
     for($i = 0; $i < $numVals; $i++) {

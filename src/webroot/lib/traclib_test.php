@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Copyright 2011 Clearspring Technologies
  *

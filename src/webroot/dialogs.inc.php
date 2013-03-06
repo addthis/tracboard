@@ -20,12 +20,12 @@
 <div id="add-ticket-dlg">
   <div class="content-outer">
     <div class="content-inner">
-      <label>Type: <? echo buildTypeChoiceMarkup() ?></label>
-      <label>Priority: <? echo buildPriorityChoiceMarkup() ?></label>
-      <label>To: <? echo buildOwnerChoiceMarkup() ?></label>
+      <label>Type: <?php echo buildTypeChoiceMarkup() ?></label>
+      <label>Priority: <?php echo buildPriorityChoiceMarkup() ?></label>
+      <label>To: <?php echo buildOwnerChoiceMarkup() ?></label>
       <div class="clearer"></div>
-      <label>Component: <? echo buildComponentChoiceMarkup($trac) ?></label>
-      <label>Scope: <? echo buildScopeChoiceMarkup() ?></label>
+      <label>Component: <?php echo buildComponentChoiceMarkup($trac) ?></label>
+      <label>Scope: <?php echo buildScopeChoiceMarkup() ?></label>
       <div class="clearer"></div>
       <label>Blocking: <input id="ticket-blocking" type="text" size="14"></input></label>
       <label>Blocked by: <input id="ticket-blocked-by" type="text" size="14"></input></label>
@@ -47,12 +47,12 @@
         <span id="complete-ticket-span"style="padding: 5px;"><input type="button" id="complete-ticket" name="completeTicket" value="Mark Completed" /></span>
         <span id="reopen-ticket-span"style="padding: 5px;"><input type="button" id="reopen-ticket" name="reopenTicket" value="Reopen"/></span>
       </div>
-      <label>Type: <? echo buildTypeChoiceMarkup() ?></label>
-      <label>Priority: <? echo buildPriorityChoiceMarkup() ?></label>
-      <label>To: <? echo buildOwnerChoiceMarkup() ?></label>
+      <label>Type: <?php echo buildTypeChoiceMarkup() ?></label>
+      <label>Priority: <?php echo buildPriorityChoiceMarkup() ?></label>
+      <label>To: <?php echo buildOwnerChoiceMarkup() ?></label>
       <div class="clearer"></div>
-      <label>Component: <? echo buildComponentChoiceMarkup($trac) ?></label>
-      <label>Scope: <? echo buildScopeChoiceMarkup() ?></label>
+      <label>Component: <?php echo buildComponentChoiceMarkup($trac) ?></label>
+      <label>Scope: <?php echo buildScopeChoiceMarkup() ?></label>
       <div class="clearer"></div>
       <label>Blocking: <input id="ticket-blocking" type="text" size="14"></input></label>
       <label>Blocked by: <input id="ticket-blocked-by" type="text" size="14"></input></label>

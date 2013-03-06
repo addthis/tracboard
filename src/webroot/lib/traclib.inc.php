@@ -408,7 +408,7 @@ class TracLib extends ITracLib {
   * @return Array of Ticket objects
   */
   public function getTicketsNotStarted($milestone, $pipeline = NULL, $excludedTypeVals = NULL) {
-    $statusVals = array("new", "assigned");
+    $statusVals = array("new", "assigned", "infoneeded_new");
     return $this->queryTickets($statusVals, $milestone, $pipeline, $excludedTypeVals);
   }
 
@@ -424,7 +424,7 @@ class TracLib extends ITracLib {
   * @return Array of Ticket objects
   */
   public function getTicketsInDev($milestone, $pipeline = NULL, $excludedTypeVals = NULL) {
-    $statusVals = array("in_work", "accepted", "waiting_for_build", "reopened");
+    $statusVals = array("in_work", "accepted", "waiting_for_build", "reopened", "infoneeded", "started");
     return $this->queryTickets($statusVals, $milestone, $pipeline, $excludedTypeVals);
   }
 
@@ -433,7 +433,7 @@ class TracLib extends ITracLib {
   */
   public function getTicketsInMilestone($milestone, $pipeline = NULL, $excludedTypeVals = NULL, $statusVals = NULL) {
     if (!$statusVals) {
-      $statusVals = array("in_work", "accepted", "waiting_for_build", "reopened", "ready_for_test", "closed", "in_test");
+      $statusVals = array("in_work", "accepted", "waiting_for_build", "reopened", "ready_for_test", "closed", "in_test", "infoneeded", "infoneeded_new", "started");
     }
     return $this->queryTickets($statusVals, $milestone, $pipeline, $excludedTypeVals);
   }
@@ -455,7 +455,7 @@ class TracLib extends ITracLib {
     }
     $query = $query . "&order=priority&desc=1";
     if (!$statusVals) {
-      $statusVals = array("new", "assigned", "in_work", "accepted", "waiting_for_build", "reopened", "ready_for_test", "closed", "in_test");
+      $statusVals = array("new", "assigned", "in_work", "accepted", "waiting_for_build", "reopened", "ready_for_test", "closed", "in_test", "infoneeded", "infoneeded_new", "started");
     }
     foreach ($statusVals as $status) {
       $query = $query . "&status=" . $status;

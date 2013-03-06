@@ -1,8 +1,8 @@
 <?php
 if (isset($_GET["to"])) {
-	$to = $_GET["to"];
+    $to = $_GET["to"];
 } else {
-	$to = "/";
+    $to = "/";
 }
 setcookie("reauth", "true");
 header("Location: " . $to);

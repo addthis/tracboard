@@ -9,8 +9,8 @@ function urlParam($name, $dfltVal = null, $check_cookie = false, $put_into_cooki
     if ($cookie_settings === NULL) $cookie_settings = array();
 
     if (isset($_GET[$name])) {
-		$val = $_GET[$name];
-	}
+        $val = $_GET[$name];
+    }
     elseif ($check_cookie) {
       if (array_key_exists($name, $cookie_settings)) $val = $cookie_settings[$name];
       else $val = $dfltVal;
@@ -30,6 +30,6 @@ function urlParam($name, $dfltVal = null, $check_cookie = false, $put_into_cooki
 
       return $val;
     }
-	else return $dfltVal;
+    else return $dfltVal;
 }
 ?>

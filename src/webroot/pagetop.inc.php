@@ -55,4 +55,3 @@ require_once "uihelpers.inc.php";
             <div class="auth">You are <a href="reauth.php?to=sprint.php"><?php echo $tracUsername ?></a></div>
       </div>
     </div>
-    

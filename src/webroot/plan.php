@@ -44,12 +44,12 @@ $milestonesViewed = explode(",", $views);
 $milestonesNotViewed = $trac->getMilestones();
 array_push($milestonesNotViewed, "backlog");
 foreach($milestonesViewed as $milestoneViewed) {
-  
+
   // Make sure its not in the not-viewed list
   $i = 0;
   foreach($milestonesNotViewed as $milestoneNotViewed) {
     if ($milestoneNotViewed == $milestoneViewed) {
-      
+
       // remove it from the not-viewed list
       array_splice($milestonesNotViewed, $i, 1);
     }
@@ -63,7 +63,7 @@ foreach($milestonesViewed as $milestoneViewed) {
   var filters = {
     pipeline: "<?php echo $pipeline ?>",
     excludedTypes: [
-    <? 
+    <?
     $numVals = sizeof($excludedTypes);
     $i = 0;
     for($i = 0; $i < $numVals; $i++) {
@@ -77,7 +77,7 @@ foreach($milestonesViewed as $milestoneViewed) {
     highlightCond: "<?php echo $highlightCond ?>",
     displayType: "<?php echo $displayType ?>",
     expanded: [
-    <? 
+    <?
     $numVals = sizeof($expanded);
     $i = 0;
     for($i = 0; $i < $numVals; $i++) {
@@ -100,14 +100,14 @@ foreach($milestonesViewed as $milestoneViewed) {
 
 <div id="filterset">
   <ul>
-    <li>Pipeline: 
+    <li>Pipeline:
     <?php echo buildPipelineChoiceMarkup($pipeline) ?>
     </li>
    <li>Group: <?php echo buildGroupingMarkup($grouping, TRUE) ?></li>
     <li>Color: <?php echo buildColoringMarkup($coloring) ?></li>
     <li>Highlight: <?php echo buildHighlightMarkup($highlightCond) ?></li>
     <li>Show: <?php echo buildDisplayTypeMarkup($displayType) ?></li>
-    <li>Detail: 
+    <li>Detail:
     <select name="ticketStyle" >
       <option selected="yes" value="standard" >standard</option>
       <option value="compact">compact</option>
@@ -116,7 +116,7 @@ foreach($milestonesViewed as $milestoneViewed) {
   </li>
     <li>Types: <?php echo buildTypesMarkup($excludedTypes) ?></li>
   <li>
-    
+
   </li>
   </ul>
    <div style="float:right">
@@ -131,16 +131,16 @@ foreach($milestonesViewed as $milestoneViewed) {
 
   <div class="clearer"></div>
   <div id="colorkey-container" style="display:none"></div>
-</div>  
+</div>
 
 
 <div id="container">
 
-<div id="plan-actionbar"> 
+<div id="plan-actionbar">
   <?php
   if (sizeof($milestonesNotViewed) > 0) {
   ?>
-  Add view: 
+  Add view:
   <select name="view-to-add">
   <?php
       foreach ($milestonesNotViewed as $ms) {
@@ -156,8 +156,8 @@ foreach($milestonesViewed as $milestoneViewed) {
   <?php
   }
   ?>
-</div>  
-  
+</div>
+
 <?php
   $col = 0;
   foreach($milestonesViewed as $milestoneViewed) {
@@ -168,7 +168,7 @@ foreach($milestonesViewed as $milestoneViewed) {
     }
     $col = $col + 1;
   }
-?>  
+?>
   <div class="clearer"></div>
 </div>
 

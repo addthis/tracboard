@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-/* 
- * Specify configuration details for your team and Trac deployment 
+/*
+ * Specify configuration details for your team and Trac deployment
  */
 
-/* The Trac milestone that your team uses to represent its backlog (see the README for workflow) */ 
+/* The Trac milestone that your team uses to represent its backlog (see the README for workflow) */
 define("BACKLOG_MILESTONE", "Backlog");
 
-/* Your team's Trac server */ 
+/* Your team's Trac server */
 define("TRAC_SERVER", "trac.clearspring.local");
 
-/* Your team's pipelines (see the README for workflow) */ 
+/* Your team's pipelines (see the README for workflow) */
 $PIPELINES = array(
   "addthis",
   "advertising",
@@ -36,7 +36,7 @@ $PIPELINES = array(
 
 /* Your team (likely a subset of all Trac users) */
 $ASSIGNEES = array(
-  "abramsm", 
+  "abramsm",
   "angel",
   "arunr",
   "cfr",

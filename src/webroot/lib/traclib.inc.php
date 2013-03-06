@@ -91,7 +91,7 @@ abstract class ITracLib {
 
   public abstract function getTicketsCompleted($milestone, $pipeline = NULL, $excludedTypeVals = NULL);
   
-  public abstract function getTicket($ticketId, $extendedInfo = FALSE);
+  public abstract function getTicket($ticketId, $extendedInfo = false);
 
   public abstract function isFutureDatedMilestone($milestoneName);
 
@@ -99,7 +99,7 @@ abstract class ITracLib {
 
   public abstract function getNextMilestone();
   
-  public abstract function getMilestones($datedOnly = TRUE, $noPastDates = TRUE);
+  public abstract function getMilestones($datedOnly = true, $noPastDates = true);
 
   public abstract function getComponents();
 
@@ -135,13 +135,13 @@ class TracLib extends ITracLib {
     $args[0] = new xmlrpcval($ticketId, "int"); // id
     $args[1] = new xmlrpcval($comment, "string"); // comment
     $args[2] = $attrStruct;
-    $args[3] = new xmlrpcval(TRUE, "boolean"); // notify
+    $args[3] = new xmlrpcval(true, "boolean"); // notify
     $msg = new xmlrpcmsg("ticket.update", $args);
     $val = $this->client->send($msg, 1000)->value();
     if ($val) {
-      return TRUE;
+      return true;
     }
-    return FALSE;
+    return false;
   }
 
   /**
@@ -156,13 +156,13 @@ class TracLib extends ITracLib {
     $args[0] = new xmlrpcval($ticketId, "int"); // id
     $args[1] = new xmlrpcval($comment, "string"); // comment
     $args[2] = $attrStruct;
-    $args[3] = new xmlrpcval(TRUE, "boolean"); // notify
+    $args[3] = new xmlrpcval(true, "boolean"); // notify
     $msg = new xmlrpcmsg("ticket.update", $args);
     $val = $this->client->send($msg, 1000)->value();
     if ($val) {
-      return TRUE;
+      return true;
     }
-    return FALSE;
+    return false;
   }
 
   /**
@@ -177,13 +177,13 @@ class TracLib extends ITracLib {
     $args[0] = new xmlrpcval($ticketId, "int"); // id
     $args[1] = new xmlrpcval("Changing summary...", "string"); // comment
     $args[2] = $attrStruct;
-    $args[3] = new xmlrpcval(TRUE, "boolean"); // notify
+    $args[3] = new xmlrpcval(true, "boolean"); // notify
     $msg = new xmlrpcmsg("ticket.update", $args);
     $val = $this->client->send($msg, 1000)->value();
     if ($val) {
-      return TRUE;
+      return true;
     }
-    return FALSE;
+    return false;
   }
 
   /**
@@ -219,13 +219,13 @@ class TracLib extends ITracLib {
     $args[0] = new xmlrpcval($ticketId, "int"); // id
     $args[1] = new xmlrpcval("Updating ticket info.", "string"); // comment
     $args[2] = $attrStruct;
-    $args[3] = new xmlrpcval(TRUE, "boolean"); // notify
+    $args[3] = new xmlrpcval(true, "boolean"); // notify
     $msg = new xmlrpcmsg("ticket.update", $args);
     $val = $this->client->send($msg, 1000)->value();
     if ($val) {
-      return TRUE;
+      return true;
     }
-    return FALSE;
+    return false;
   }
 
   /**
@@ -262,17 +262,17 @@ class TracLib extends ITracLib {
     $args[0] = new xmlrpcval($ticketId, "int"); // id
     $args[1] = new xmlrpcval("Changing parent...", "string"); // comment
     $args[2] = $attrStruct;
-    $args[3] = new xmlrpcval(TRUE, "boolean"); // notify
+    $args[3] = new xmlrpcval(true, "boolean"); // notify
     $msg = new xmlrpcmsg("ticket.update", $args);
     $val = $this->client->send($msg, 1000)->value();
     if ($val) {
-      return TRUE;
+      return true;
     }
-    return FALSE;
+    return false;
   }
 
   /**
-  * @return ticket ID or FALSE
+  * @return ticket ID or false
   */
   public function quickCreateTicket($summary, $pipeline, $ticketType = "feature", $newMilestone = "TBD", $priority = "normal", $scope = "n/a", $component="TBD", $blocking="", $status = "new", $owner=" ") {
     $attrs = array(
@@ -292,7 +292,7 @@ class TracLib extends ITracLib {
     $args[0] = new xmlrpcval($summary, "string"); // summary
     $args[1] = new xmlrpcval($summary, "string"); // description
     $args[2] = $attrStruct;
-    $args[3] = new xmlrpcval(TRUE, "boolean"); // notify
+    $args[3] = new xmlrpcval(true, "boolean"); // notify
     $msg = new xmlrpcmsg("ticket.create", $args);
     $val = $this->client->send($msg, 1000)->value();
     if ($val) {
@@ -302,7 +302,7 @@ class TracLib extends ITracLib {
       }
       return $ticketId;
     }
-    return FALSE;
+    return false;
   }
 
   /**
@@ -500,7 +500,7 @@ class TracLib extends ITracLib {
   /**
   * @return A Ticket object, NULL if unavail
   */
-  public function getTicket($ticketId, $extendedInfo = FALSE) {
+  public function getTicket($ticketId, $extendedInfo = false) {
     $ticketStruct = $this->getTicketStruct($ticketId);
     if ($ticketStruct) {
       return $this->parseTicket($ticketId, $ticketStruct, $extendedInfo);
@@ -511,7 +511,7 @@ class TracLib extends ITracLib {
   /**
   * Is the specified  milestone a dated milestone, in the future?
   *
-  * @return TRUE if the milestone is one that has a date in the future.  FALSE if its in the past or not a date milestone.
+  * @return true if the milestone is one that has a date in the future.  false if its in the past or not a date milestone.
   */
   public function isFutureDatedMilestone($milestoneName) {
     $now = time();
@@ -521,7 +521,7 @@ class TracLib extends ITracLib {
       //echo "Now: " . $now . ", milestone: " . $milestone . "<br/>";
       return ($milestone > ($now - 604800)); // 1 week
     }
-    return FALSE;
+    return false;
   }
 
   /**
@@ -530,14 +530,14 @@ class TracLib extends ITracLib {
   public function isDatedMilestone($milestoneName) {
     if (strpos($milestoneName, "20") == 0) {
       //if (strlen($milestoneName) == 8) {
-        return TRUE;
+        return true;
       //}
     }
-    return FALSE;
+    return false;
   }
 
   public function getNextMilestone() {
-    $milestones = $this->getMilestones(TRUE, TRUE);
+    $milestones = $this->getMilestones(true, true);
     return $milestones[0];
   }
   
@@ -546,7 +546,7 @@ class TracLib extends ITracLib {
   * 
   * @return An array of milestone names
   */
-  public function getMilestones($datedOnly = TRUE, $noPastDates = TRUE) {
+  public function getMilestones($datedOnly = true, $noPastDates = true) {
     $milestoneNames = array();
     $msg = new xmlrpcmsg("ticket.milestone.getAll", array());
     $val = $this->client->send($msg, 1000)->value();
@@ -584,7 +584,7 @@ class TracLib extends ITracLib {
   } 
 
   /**
-  * @return FALSE if error
+  * @return false if error
   */
   private function getTicketStruct($ticketId) {
     $ticketStruct = NULL;
@@ -599,7 +599,7 @@ class TracLib extends ITracLib {
   /**
   * @return a Ticket or TicketEx object, depending
   */
-  private function parseTicket($ticketNum, $ticketStruct, $extendedInfo = FALSE) {
+  private function parseTicket($ticketNum, $ticketStruct, $extendedInfo = false) {
     if ($extendedInfo) $ticket = new TicketEx();
     else $ticket = new Ticket();
     $ticket->id = $ticketNum;

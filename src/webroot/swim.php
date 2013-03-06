@@ -7,7 +7,7 @@ include("dialogs.inc.php");
 require_once("utils.inc.php");
 
 // The filter-set controls
-echo buildFilterSetMarkup($trac, TRUE);
+echo buildFilterSetMarkup($trac, true);
 
 function swimlaneHeader($name) {
 ?>

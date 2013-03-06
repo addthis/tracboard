@@ -69,9 +69,9 @@ class InterfaceCache {
     $wrappedMethod = $this->wrappedObjRefl->getMethod($methodName);
     
     // Blacklisted?
-    $skipCache = FALSE;
+    $skipCache = false;
     if (($this->blacklist != NULL) && (in_array($methodName, $this->blacklist))) {
-      $skipCache = TRUE;
+      $skipCache = true;
     }
     if (!$skipCache) {
 

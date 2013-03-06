@@ -76,7 +76,7 @@ function buildTypesMarkup($excludedTypes) {
     return $markup;
 }
 
-function buildGroupingMarkup($activeGrouping, $includeStatus=FALSE) {
+function buildGroupingMarkup($activeGrouping, $includeStatus=false) {
     $markup = '<select name="grouping">';
     $groupings = array("none", "owner", "priority", "component", "type", "status", "scope", );
     if ($includeStatus) {
@@ -224,16 +224,16 @@ function buildMilestonePhaseColumn($trac, $pipeline, $milestone, $phase, $displa
     $markup = "";
     if ($phase == "not-started") {
         if (!$shellOnly) $tickets = $trac->getTicketsNotStarted($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "Not Started", $phase, FALSE, FALSE, $displayType, $grouping, $coloring, FALSE, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml($tickets, "Not Started", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     } else if ($phase == "in-dev") {
         if (!$shellOnly) $tickets = $trac->getTicketsInDev($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "In Dev", $phase, FALSE, FALSE, $displayType, $grouping, $coloring, FALSE, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml($tickets, "In Dev", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     } else if ($phase == "in-test") {
         if (!$shellOnly) $tickets = $trac->getTicketsInTest($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "In Test", $phase, FALSE, FALSE, $displayType, $grouping, $coloring, FALSE, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml($tickets, "In Test", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     } else if ($phase == "done") {
         if (!$shellOnly) $tickets = $trac->getTicketsCompleted($milestone, $pipeline, $excludedTypes);
-        $markup .= buildTicketColumnHtml($tickets, "Completed", $phase, FALSE, FALSE, $displayType, $grouping, $coloring, FALSE, $expanded, $highlightCond);
+        $markup .= buildTicketColumnHtml($tickets, "Completed", $phase, false, false, $displayType, $grouping, $coloring, false, $expanded, $highlightCond);
     }
     return $markup;
 }
@@ -241,13 +241,13 @@ function buildMilestonePhaseColumn($trac, $pipeline, $milestone, $phase, $displa
 function buildBacklogColumnHtml($trac, $pipeline, $grouping, $displayType, $excludedTypeVals, $shellOnly, $coloring, $expanded, $highlightCond = "none") {
     $statusVals = array("new", "reopened", "accepted", "assigned", "waiting_for_build", "in_test", "ready_for_test", "in_work");
     if (!$shellOnly) $tickets = $trac->queryTickets($statusVals, BACKLOG_MILESTONE, $pipeline, $excludedTypeVals);
-    return buildTicketColumnHtml($tickets, "Backlog", "backlog", TRUE, TRUE, $displayType, $grouping, $coloring, TRUE, $expanded, $highlightCond);
+    return buildTicketColumnHtml($tickets, "Backlog", "backlog", true, true, $displayType, $grouping, $coloring, true, $expanded, $highlightCond);
 }
 
 function buildMilestoneColumnHtml($trac, $pipeline, $milestone, $displayType, $grouping, $excludedTypeVals, $shellOnly, $coloring, $expanded, $highlightCond = "none") {
     $statusVals = array("new", "accepted", "reopened", "assigned", "waiting_for_build", "in_test", "in_work", "ready_for_test");
     if (!$shellOnly) $tickets = $trac->queryTickets($statusVals, $milestone, $pipeline, $excludedTypeVals);
-    return buildTicketColumnHtml($tickets, $milestone, $milestone, TRUE, TRUE, $displayType, $grouping, $coloring, TRUE, $expanded, $highlightCond);
+    return buildTicketColumnHtml($tickets, $milestone, $milestone, true, true, $displayType, $grouping, $coloring, true, $expanded, $highlightCond);
 }
 
 function buildOwnerChoiceMarkup($dfltAssignee = " ") {
@@ -282,7 +282,7 @@ function buildPipelineChoiceMarkup($dfltPipeline = "") {
 }
 
 // Generates markup for the view filters
-function buildFilterSetMarkup($trac, $showMilestones = FALSE) {
+function buildFilterSetMarkup($trac, $showMilestones = false) {
     $markup = '<div id="filterset">';
     $markup .= '  <ul>';
 
@@ -333,7 +333,7 @@ function buildFilterSetMarkup($trac, $showMilestones = FALSE) {
     return $markup;
 }
 
-function buildSwimlaneStoryLane($set, $storyId, $storyPipeline, $storyMilestone, $ticketMatrix, $includeCompleted = FALSE, $includeExternal = FALSE) {
+function buildSwimlaneStoryLane($set, $storyId, $storyPipeline, $storyMilestone, $ticketMatrix, $includeCompleted = false, $includeExternal = false) {
     $mappedTickets = array(array(), array(), array(), array());
     if (isset($ticketMatrix["new"])) $mappedTickets[0] = array_merge($mappedTickets[0], $ticketMatrix["new"]);
     if (isset($ticketMatrix["reopened"])) $mappedTickets[1] = array_merge($mappedTickets[1], $ticketMatrix["reopened"]);
@@ -400,7 +400,7 @@ function buildSwimlaneStoryLane($set, $storyId, $storyPipeline, $storyMilestone,
             $markup .= '</span>'; // column-controls
             $markup .= '</div>';
             foreach ($bucketed as $ticket) {
-                $markup .= buildTicketHtml($ticket, TRUE, NULL, getColorByFieldVal($ticketEx, $coloring), getGroupByFieldVal($ticketEx, $grouping), $highlightCond);
+                $markup .= buildTicketHtml($ticket, true, NULL, getColorByFieldVal($ticketEx, $coloring), getGroupByFieldVal($ticketEx, $grouping), $highlightCond);
             }
             $markup .= '</div>';
         }
@@ -413,7 +413,7 @@ function buildSwimlaneStoryLane($set, $storyId, $storyPipeline, $storyMilestone,
         $markup .= sizeof($externals);
         $markup .= '</div>';
         foreach ($externals as $ticket) {
-            $markup .= buildTicketHtml($ticket, TRUE, $displayType, getColorByFieldVal($ticketEx, $coloring), getGroupByFieldVal($ticketEx, $grouping), $highlightCond);
+            $markup .= buildTicketHtml($ticket, true, $displayType, getColorByFieldVal($ticketEx, $coloring), getGroupByFieldVal($ticketEx, $grouping), $highlightCond);
         }
         $markup .= '</div>';
     }
@@ -431,7 +431,7 @@ function buildSwimlaneStoryCell($pipeline, $milestone, $inSet, $headTicket) {
     $markup .= '</div>';
     $markup .= '<div class="storycell-body">';
     if ($headTicket) {
-        $markup .= buildTicketHtml($headTicket, FALSE, TICKET_CARD, getColorByFieldVal($headTicket, $coloring), getGroupByFieldVal($headTicket, $grouping), $highlightCond);
+        $markup .= buildTicketHtml($headTicket, false, TICKET_CARD, getColorByFieldVal($headTicket, $coloring), getGroupByFieldVal($headTicket, $grouping), $highlightCond);
     } else {
         $markup .= "----";
     }
@@ -540,7 +540,7 @@ function buildSwimColumnBackground($title, $columnId) {
 * @param columnId What to set as the id attribute of the column, for later lookups
 * @param tickets can be null or unset if you just want a shell...
 */
-function buildTicketColumnHtml($tickets, $title, $columnId, $closeControl, $ticketDragDrop, $displayType, $groupBy = "none", $colorBy = "uniform", $addControl = FALSE, $expanded = FALSE, $highlightCond = "none") {
+function buildTicketColumnHtml($tickets, $title, $columnId, $closeControl, $ticketDragDrop, $displayType, $groupBy = "none", $colorBy = "uniform", $addControl = false, $expanded = false, $highlightCond = "none") {
 
     $markup = '<div class="column ' . (!isset($tickets) ? 'empty-shell ' : '') . ($expanded ? 'column-expanded' : '') . '" id="' . $columnId . '" >';
 
@@ -592,7 +592,7 @@ function buildTicketColumnHtml($tickets, $title, $columnId, $closeControl, $tick
 *
 * @return HTML for an individual ticket.  The top-level ticket contains attributes for ticket properties.
 */
-function buildTicketHtml($ticket, $draggable = FALSE, $displayType = TICKET_ROW, $colorByFieldVal = undefined, $groupByFieldVal = undefined, $highlightCond = "none") {
+function buildTicketHtml($ticket, $draggable = false, $displayType = TICKET_ROW, $colorByFieldVal = undefined, $groupByFieldVal = undefined, $highlightCond = "none") {
 
     // Render in default color
     $ticketColorClass = "ticket-coloring-dflt";

@@ -104,7 +104,7 @@ foreach($milestonesViewed as $milestoneViewed) {
     <li>Pipeline:
     <?php echo buildPipelineChoiceMarkup($pipeline) ?>
     </li>
-   <li>Group: <?php echo buildGroupingMarkup($grouping, TRUE) ?></li>
+   <li>Group: <?php echo buildGroupingMarkup($grouping, true) ?></li>
     <li>Color: <?php echo buildColoringMarkup($coloring) ?></li>
     <li>Highlight: <?php echo buildHighlightMarkup($highlightCond) ?></li>
     <li>Show: <?php echo buildDisplayTypeMarkup($displayType) ?></li>
@@ -163,9 +163,9 @@ foreach($milestonesViewed as $milestoneViewed) {
   $col = 0;
   foreach($milestonesViewed as $milestoneViewed) {
     if ($milestoneViewed == "backlog") {
-        echo buildBacklogColumnHtml($trac, $pipeline, $grouping, $displayType, $excludedTypes, TRUE, $coloring, $expanded[$col], $highlightCond);
+      echo buildBacklogColumnHtml($trac, $pipeline, $grouping, $displayType, $excludedTypes, true, $coloring, $expanded[$col], $highlightCond);
     } else {
-        echo buildMilestoneColumnHtml($trac, $pipeline, $milestoneViewed, $displayType, $grouping, $excludedTypes, TRUE, $coloring, $expanded[$col], $highlightCond);
+      echo buildMilestoneColumnHtml($trac, $pipeline, $milestoneViewed, $displayType, $grouping, $excludedTypes, true, $coloring, $expanded[$col], $highlightCond);
     }
     $col = $col + 1;
   }

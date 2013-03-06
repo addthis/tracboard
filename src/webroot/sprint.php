@@ -87,10 +87,10 @@ $expanded = explode(",", $expandedStr);
 <div id="container">
 
 <?php
-    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "not-started", $displayType, $grouping, $excludedTypes, TRUE, $coloring, $expanded[0], $highlightCond);
-    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "in-dev", $displayType, $grouping, $excludedTypes, TRUE, $coloring, $expanded[1], $highlightCond);
-    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "in-test", $displayType, $grouping, $excludedTypes, TRUE, $coloring, ($expanded[2] == "1"), $highlightCond);
-    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "done", $displayType, $grouping, $excludedTypes, TRUE, $coloring, ($expanded[3] == "1"), $highlightCond);
+    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "not-started", $displayType, $grouping, $excludedTypes, true, $coloring, $expanded[0], $highlightCond);
+    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "in-dev", $displayType, $grouping, $excludedTypes, true, $coloring, $expanded[1], $highlightCond);
+    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "in-test", $displayType, $grouping, $excludedTypes, true, $coloring, ($expanded[2] == "1"), $highlightCond);
+    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, "done", $displayType, $grouping, $excludedTypes, true, $coloring, ($expanded[3] == "1"), $highlightCond);
 
 ?>
     <div class="clearer"></div>

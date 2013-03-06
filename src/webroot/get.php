@@ -23,7 +23,7 @@ $action = urlParam('a', "");
 
 if ($action == "ticketPreview") { // render ticket-preview HTML
     $ticketId = urlParam('id');
-    $ticketEx = $trac->getTicket($ticketId, TRUE);
+    $ticketEx = $trac->getTicket($ticketId, true);
     $previewMarkup = buildTicketPreviewHtml($ticketEx);
     echo $previewMarkup;
 } else if ($action == "ticketCard") { // render ticket card HTML
@@ -32,8 +32,8 @@ if ($action == "ticketPreview") { // render ticket-preview HTML
     $coloring = urlParam('coloring');
     $displayType = urlParam('display');
     $highlightCond = urlParam('highlight');
-    $ticketEx = $trac->getTicket($ticketId, TRUE);
-    $markup = buildTicketHtml($ticketEx, TRUE, $displayType, getColorByFieldVal($ticketEx, $coloring), getGroupByFieldVal($ticketEx, $grouping), $highlightCond);
+    $ticketEx = $trac->getTicket($ticketId, true);
+    $markup = buildTicketHtml($ticketEx, true, $displayType, getColorByFieldVal($ticketEx, $coloring), getGroupByFieldVal($ticketEx, $grouping), $highlightCond);
     echo $markup;
 } else if ($action == "moveTicket") { // move the ticket to the new milestone
     $ticketId = urlParam('id');
@@ -110,7 +110,7 @@ if ($action == "ticketPreview") { // render ticket-preview HTML
     $expanded = urlParam('expanded');
     $displayType = urlParam('display');
     $highlightCond = urlParam('highlight', "none");
-    echo buildMilestoneColumnHtml($trac, $pipeline, $milestone, $displayType, $grouping, $excludedTypes, FALSE, $coloring, $expanded, $highlightCond);
+    echo buildMilestoneColumnHtml($trac, $pipeline, $milestone, $displayType, $grouping, $excludedTypes, false, $coloring, $expanded, $highlightCond);
 } else if ($action == "backlogColumn") { // render a column of tickets in a backlog
     $pipeline = urlParam('pipeline');
     $excludedTypesStr = urlParam('notypes', "");
@@ -124,7 +124,7 @@ if ($action == "ticketPreview") { // render ticket-preview HTML
     $expanded = urlParam('expanded');
     $displayType = urlParam('display', TICKET_CARD);
     $highlightCond = urlParam('highlight', "none");
-    echo buildBacklogColumnHtml($trac, $pipeline, $grouping, $displayType, $excludedTypes, FALSE, $coloring, $expanded, $highlightCond);
+    echo buildBacklogColumnHtml($trac, $pipeline, $grouping, $displayType, $excludedTypes, false, $coloring, $expanded, $highlightCond);
 } else if ($action == "createSwimlanes") { // render a set of tickets
     $milestone = urlParam('milestone');
     $pipeline = urlParam('pipeline');
@@ -175,7 +175,7 @@ if ($action == "ticketPreview") { // render ticket-preview HTML
             // No tickets in this swimlane...its empty
             $tickets = array();
         } else {
-            $headTicket = $trac->getTicket($headTicketId, FALSE);
+            $headTicket = $trac->getTicket($headTicketId, false);
             $tickets = $trac->getDependentTickets($headTicket->id, NULL);
         }
     }
@@ -196,7 +196,7 @@ if ($action == "ticketPreview") { // render ticket-preview HTML
     $displayType = urlParam('display', TICKET_CARD);
     $phase = urlParam('phase', "not-started");
     $highlightCond = urlParam('highlight');
-    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, $phase, $displayType, $grouping, $excludedTypes, FALSE, $coloring, $expanded, $highlightCond);
+    echo buildMilestonePhaseColumn($trac, $pipeline, $milestone, $phase, $displayType, $grouping, $excludedTypes, false, $coloring, $expanded, $highlightCond);
 } else {
     echo "WTF action?";
 }

@@ -25,6 +25,10 @@ define("BACKLOG_MILESTONE", "Backlog");
 /* Your team's Trac server */
 define("TRAC_SERVER", "trac.clearspring.local");
 
+/* What field you use in trac to group teams */
+$PIPELINE_FIELD = "pipeline";
+
+
 /* Your team's pipelines (see the README for workflow) */
 $PIPELINES = array(
   "addthis",

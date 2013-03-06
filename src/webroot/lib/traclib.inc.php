@@ -18,6 +18,9 @@
 include "xmlrpc/xmlrpc.inc";
 date_default_timezone_set('America/New_York');
 
+require_once('config.inc.php');
+
+
 class Ticket {
 
   public $id;       
@@ -275,9 +278,10 @@ class TracLib extends ITracLib {
   * @return ticket ID or false
   */
   public function quickCreateTicket($summary, $pipeline, $ticketType = "feature", $newMilestone = "TBD", $priority = "normal", $scope = "n/a", $component="TBD", $blocking="", $status = "new", $owner=" ") {
+    global $PIPELINE_FIELD;
     $attrs = array(
         "milestone" => new xmlrpcval($newMilestone, "string"),
-        "pipeline" => new xmlrpcval($pipeline, "string"),
+        $PIPELINE_FIELD => new xmlrpcval($pipeline, "string"),
       "type" => new xmlrpcval($ticketType, "string"),
       "priority" => new xmlrpcval($priority, "string"),
       "scope" => new xmlrpcval($scope, "string"),
@@ -382,9 +386,11 @@ class TracLib extends ITracLib {
   * @return Array of Ticket objects
   */
   public function queryTickets($statusVals, $milestone, $pipeline = NULL, $excludedTypeVals = NULL) {
+    global $PIPELINE_FIELD;
+
     $query = "milestone=" . $milestone;
     if ($pipeline) {
-      $query = $query . "&pipeline=" . $pipeline;
+      $query = $query . "&" . $PIPELINE_FIELD . "=" . $pipeline;
     }
     if ($excludedTypeVals) {
       foreach ($excludedTypeVals as $excludedStatus) {
@@ -436,9 +442,11 @@ class TracLib extends ITracLib {
   * @return Array of Ticket objects
   */
   public function getNonBlockingTicketsInMilestone($milestone, $pipeline = NULL, $excludedTypeVals = NULL, $statusVals = NULL) {
+    global $PIPELINE_FIELD;
+
     $query = "milestone=" . $milestone;
     if ($pipeline) {
-      $query = $query . "&pipeline=" . $pipeline;
+      $query = $query . "&" . $PIPELINE_FIELD . "=" . $pipeline;
     }
     if ($excludedTypeVals) {
       foreach ($excludedTypeVals as $excludedStatus) {
@@ -600,6 +608,8 @@ class TracLib extends ITracLib {
   * @return a Ticket or TicketEx object, depending
   */
   private function parseTicket($ticketNum, $ticketStruct, $extendedInfo = false) {
+    global $PIPELINE_FIELD;
+
     if ($extendedInfo) $ticket = new TicketEx();
     else $ticket = new Ticket();
     $ticket->id = $ticketNum;
@@ -628,8 +638,8 @@ class TracLib extends ITracLib {
     } else {
       $ticket->milestone = "TBD";
     }
-      if ($ticketStruct->structmem("pipeline")) {
-      $ticket->pipeline = $ticketStruct->structmem("pipeline")->scalarval();
+      if ($ticketStruct->structmem($PIPELINE_FIELD)) {
+      $ticket->pipeline = $ticketStruct->structmem($PIPELINE_FIELD)->scalarval();
     } else {
       $ticket->milestone = "TBD";
     }

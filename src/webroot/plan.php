@@ -21,6 +21,7 @@ $nav = "plan";
 $scriptFiles = array("js/plan.js");
 include "pagetop.inc.php";
 include "dialogs.inc.php";
+require_once('config.inc.php');
 require_once("utils.inc.php");
 
 // Params
@@ -121,9 +122,9 @@ foreach($milestonesViewed as $milestoneViewed) {
   </ul>
    <div style="float:right">
     Admin:&nbsp;
-    <a href="" title="Admin Trac milestones..." onclick="javascript:onViewUrl('http://<? echo TRAC_SERVER ?>/admin/ticket/milestones');return false;">milestones</a>
+    <a href="" title="Admin Trac milestones..." onclick="javascript:onViewUrl('http://<?php echo TRAC_SERVER ?>/admin/ticket/milestones');return false;">milestones</a>
     /
-    <a href="" title="Admin Trac components..." onclick="javascript:onViewUrl('http://<? echo TRAC_SERVER ?>/admin/ticket/components');return false;">components</a>
+    <a href="" title="Admin Trac components..." onclick="javascript:onViewUrl('http://<?php echo TRAC_SERVER ?>/admin/ticket/components');return false;">components</a>
     &nbsp;
     &nbsp;
     <a title="Reload this view..." href="" onclick="javascript:refreshAllColumns();return false;">reload</img></a>

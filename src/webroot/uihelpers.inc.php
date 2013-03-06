@@ -421,7 +421,7 @@ function buildSwimlaneStoryLane($set, $storyId, $storyPipeline, $storyMilestone,
 }
 
 function buildSwimlaneStoryCell($pipeline, $milestone, $inSet, $headTicket) {
-    $markup .= '<div class="storycell-header">';
+    $markup = '<div class="storycell-header">';
     $markup .= '<span class="column-controls">';
     $refreshSwimlaneJs = "javascript:refreshSwimlane('" . $pipeline . "', '" . $milestone . "', '" . $inSet . "', '" . (($headTicket != NULL) ? $headTicket->id : "0") . "');return false;";
     $markup .= '<span class="column-reload column-control" title="Reload this swimlane" onclick="' . $refreshSwimlaneJs . '"></span>';
@@ -440,6 +440,7 @@ function buildSwimlaneStoryCell($pipeline, $milestone, $inSet, $headTicket) {
 }
 
 function buildSwimlaneStoryCell_alt($pipeline, $milestone, $inSet, $headTicket) {
+    $markup = "";
     if ($headTicket) {
         $markup .= '<div class="ticket ticket-swimlane-head">';
 
@@ -471,7 +472,7 @@ function buildSwimlaneStoryCell_alt($pipeline, $milestone, $inSet, $headTicket) 
 }
 
 function buildSwimlane($pipeline, $milestone, $inSet, $headTicket = NULL) {
-    $markup .= '<div class="storylane-row" set="' . $inSet . '" story-id="' . (($headTicket) ? $headTicket->id : 0) . '">';
+    $markup = '<div class="storylane-row" set="' . $inSet . '" story-id="' . (($headTicket) ? $headTicket->id : 0) . '">';
     $markup .= '<div class="storylane-storycell"';
     $markup .= ' story-id="' . (($headTicket) ? $headTicket->id : 0) . '"';
     $markup .= '>';

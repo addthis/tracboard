@@ -16,7 +16,7 @@ function urlParam($name, $dfltVal = null, $check_cookie = false, $put_into_cooki
       else $val = $dfltVal;
     }
 
-    if (sizeof($val) > 0) {
+    if (isset($val) && sizeof($val) > 0) {
       // Make a 30-day cookie if asked:
       if ($put_into_cookie) {
         $cookie_settings[$name] = $val;
